@@ -1,0 +1,18 @@
+
+name: master
+
+on:
+  push:
+    branches:
+      - 'master'
+
+env:
+  KEY: "dummy"
+
+jobs:
+  deploy:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${SSH_KEY}

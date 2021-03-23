@@ -1,0 +1,21 @@
+
+name: pr
+
+on: push
+
+env:
+  USER: dummy_user
+  PASSWORD: dummy_pass
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NAME: api
+    steps:
+      - uses: actions/checkout@master
+      - run: |
+          echo ${USER}
+      - run: |
+          echo ${PASSWORD}
+        if: github.event.pull_request.merged
