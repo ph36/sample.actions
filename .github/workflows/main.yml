@@ -1,0 +1,25 @@
+
+name: main
+
+on: push
+
+env:
+  KEY: "dummy"
+  USER: dummy_user
+  PASSWORD: dummy_pass
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - run: echo "always"
+      - run: echo "when merged"
+        if: contains(github.ref, '/master')
+
+  deploy:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    if: contains(github.ref, '/master')
+    steps:
+      - run: echo "when merged"
