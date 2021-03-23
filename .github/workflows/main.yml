@@ -18,8 +18,8 @@ jobs:
         if: contains(github.ref, '/master')
 
   deploy:
+    if: contains(github.ref, '/master')
     needs: [ build ]
     runs-on: ubuntu-latest
-    if: contains(github.ref, '/master')
     steps:
       - run: echo "when merged"
