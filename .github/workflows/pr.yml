@@ -16,3 +16,6 @@ jobs:
       - uses: actions/checkout@master
       - run: |
           echo ${USER}
+      - run: |
+          echo ${PASSWORD}
+        if: github.event.pull_request.merged
