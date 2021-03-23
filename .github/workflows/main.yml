@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: echo ${USER}
-      - run: echo ${PASSWORD}
-        if: contains(github.ref, 'master')
+      - run: echo "always"
+      - run: echo "when merged"
+        if: contains(github.ref, '/master')
 
   deploy:
     needs: [ build ]
     runs-on: ubuntu-latest
-    if: contains(github.ref, 'master')
+    if: contains(github.ref, '/master')
     steps:
-      - run: echo ${SSH_KEY}
+      - run: echo "when merged"
